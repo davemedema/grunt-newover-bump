@@ -81,6 +81,6 @@ module.exports = function (grunt) {
     grunt.config.set(options.configProp, json)
 
     // Inform...
-    grunt.log.ok('Bumped to: ' + json.version)
+    grunt.log.ok('Bumped to: v' + json.version)
   })
 }
