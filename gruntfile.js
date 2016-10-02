@@ -12,16 +12,6 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     /**
-     * @gconfig bump
-     */
-    // bump: {
-      // options: {
-        // configProp: 'bumpPkg',
-        // file: 'tmp/package.json'
-      // }
-    // },
-
-    /**
      * @gconfig clean
      */
     clean: {
@@ -72,7 +62,7 @@ module.exports = function (grunt) {
    * @gtask release
    */
   grunt.registerTask('release', function (type) {
-    // grunt.task.run('test')
+    grunt.task.run('test')
     grunt.task.run('bump:' + (type || 'patch'))
     grunt.task.run('tag')
   })
@@ -83,15 +73,15 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:test',
     'copy:test',
-    'bump:prerelease',
+    'bump:prerelease:test',
     'nodeunit:prerelease',
-    'bump:patch',
+    'bump:patch:test',
     'nodeunit:patch',
-    'bump:minor',
+    'bump:minor:test',
     'nodeunit:minor',
-    'bump:major',
+    'bump:major:test',
     'nodeunit:major',
-    'bump:0.1.0',
+    'bump:0.1.0:test',
     'nodeunit:version'
   ])
 }

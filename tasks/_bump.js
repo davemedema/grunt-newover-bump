@@ -31,26 +31,19 @@ function getIndentation (str) {
  * @param {object} grunt
  */
 module.exports = function (grunt) {
-  grunt.registerTask('bump', 'Bump.', function (release, env) {
-    var options = this.options({
+  grunt.registerTask('bump', 'Bump.', function (release) {
+    var opts = this.options({
       configProp: 'pkg',
       file: 'package.json'
     })
 
-    if (env === 'test') {
-      options = {
-        configProp: '_pkg',
-        file: 'tmp/package.json'
-      }
+    // Validate opts.file...
+    if (!grunt.file.exists(opts.file)) {
+      grunt.warn('File "' + opts.file + '" not found.')
     }
 
-    // Validate options.file...
-    if (!grunt.file.exists(options.file)) {
-      grunt.warn('File "' + options.file + '" not found.')
-    }
-
-    // Read and parse options.file...
-    var jsonStr = grunt.file.read(options.file)
+    // Read and parse opts.file...
+    var jsonStr = grunt.file.read(opts.file)
     var json = JSON.parse(jsonStr)
 
     // Make sure we're updating a valid semantic version...
@@ -70,15 +63,15 @@ module.exports = function (grunt) {
     // Update json
     json.version = semver.valid(release) || semver.inc(json.version, release)
 
-    // Write options.file
+    // Write opts.file
     var indentation = getIndentation(jsonStr)
 
-    if (!grunt.file.write(options.file, JSON.stringify(json, null, indentation))) {
-      grunt.warn('Couldn\'t write "' + options.file + '".')
+    if (!grunt.file.write(opts.file, JSON.stringify(json, null, indentation))) {
+      grunt.warn('Couldn\'t write "' + opts.file + '".')
     }
 
     // Update config property...
-    grunt.config.set(options.configProp, json)
+    grunt.config.set(opts.configProp, json)
 
     // Inform...
     grunt.log.ok('Bumped to: ' + json.version)
