@@ -1,0 +1,44 @@
+{
+  "name": "grunt-newover-bump",
+  "version": "1.0.2",
+  "author": {
+    "name": "Dave Medema",
+    "email": "davemedema@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/davemedema/grunt-newover-bump/issues"
+  },
+  "description": "Bump.",
+  "engines": {
+    "node": ">= 6.7.0"
+  },
+  "files": [
+    "tasks"
+  ],
+  "homepage": "https://github.com/davemedema/grunt-newover-bump",
+  "keywords": [
+    "bump",
+    "grunt",
+    "gruntplugin",
+    "newover"
+  ],
+  "license": "MIT",
+  "main": "gruntfile.js",
+  "repository": "davemedema/grunt-newover-bump",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "semver": "^5.3.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.5"
+  }
+}
