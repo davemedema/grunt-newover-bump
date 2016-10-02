@@ -1,6 +1,6 @@
 {
   "name": "grunt-newover-bump",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "author": {
     "name": "Dave Medema",
     "email": "davemedema@gmail.com"
@@ -36,6 +36,7 @@
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-newover-tag": "^1.0.2",
     "load-grunt-tasks": "^3.5.2"
   },
   "peerDependencies": {
